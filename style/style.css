@@ -11,7 +11,7 @@ body {
 }
 
 main {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     height: 600px;
     width: 350px;
     border-radius: 30px;
@@ -19,8 +19,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-   
-   
 }
 
 #display {
@@ -35,16 +33,14 @@ main {
     justify-content: right;
     padding: 0 20px;
     box-sizing: border-box;
-    
-    
-    
 }
 
 .container {
+    margin-top: 20px;
+    flex: 1;
     display: flex;
-    width: 100%;
-    margin-top: 10px;
-  
+    width: 100%
+    
 }
 
 .container-numeros {
@@ -52,19 +48,20 @@ main {
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
     flex: 3;
-    margin-top: 100px;
     font-size: 40px;
+    
 }
 
 .container-operadores {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
     gap: 10px;
     flex: 1;
     margin-left: 10px;
-    margin-top: 100px;
     font-size: 40px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+ 
 }
 
 .numero, .operador {
@@ -78,7 +75,6 @@ main {
     cursor: pointer;
     height: 70px;
     width: 70px;
-   
 }
 
 .numero:hover, .operador:hover {
