@@ -79,4 +79,10 @@ main {
 
 .numero:hover, .operador:hover {
     background-color: darkgray;
+    
 }
+.numero:active, .operador:active{
+    filter: brightness(1.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+ }
