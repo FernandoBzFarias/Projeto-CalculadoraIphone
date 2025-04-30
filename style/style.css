@@ -53,6 +53,7 @@ main {
 }
 
 .container-operadores {
+    
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     gap: 10px;
@@ -89,4 +90,8 @@ main {
 
  button {
     all: unset; 
+ }
+
+ #opera{
+    background-color: orange;
  }
