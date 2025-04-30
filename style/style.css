@@ -29,13 +29,13 @@ main {
     border-radius: 20px;
     font-size: 42px;
     display: flex;
-    align-items: center;
-    justify-content: right;
+    align-items:center;
+    justify-content: center;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
-.container {
+.container{
     margin-top: 20px;
     flex: 1;
     display: flex;
@@ -85,4 +85,8 @@ main {
     filter: brightness(1.2);
     cursor: pointer;
     transition: background-color 0.3s ease;
+ }
+
+ button {
+    all: unset; 
  }
