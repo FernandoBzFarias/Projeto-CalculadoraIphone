@@ -76,6 +76,7 @@ function calcular() {
         display.textContent = "Erro";
         expressao = "";
     }
+    carregarHistorico();
 }
 
 function enviarParaBanco(expressao, resultado) {
@@ -137,3 +138,30 @@ function atualizarDisplayComHistorico(dados) {
     });
 }
 
+async function carregarHistorico() {
+    try {
+      const response = await fetch("listar.php");
+      const dados = await response.json();
+
+      const historicoDiv = document.getElementById("historico");
+      historicoDiv.innerHTML = ""; // limpa antes
+
+      if (dados.length === 0) {
+        historicoDiv.innerHTML = "Nenhum cálculo salvo.";
+        return;
+      }
+
+      // Mostra os 5 últimos
+      const ultimos = dados.slice(-5).reverse();
+      ultimos.forEach(item => {
+        const linha = document.createElement("div");
+        linha.textContent = `${item.expressao} = ${item.resultado}`;
+        historicoDiv.appendChild(linha);
+      });
+
+    } catch (e) {
+      document.getElementById("historico").textContent = "Erro ao carregar histórico.";
+    }
+  }
+
+  carregarHistorico();
