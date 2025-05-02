@@ -7,37 +7,35 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    
     <main>
-        <div id="display"></div> 
-        <div class="container"> 
-            <form action="form.php"class="container-numeros">
-                
-                <button type="button" class="numero">7</button>
-                <button type="button" class="numero">8</button>
-                <button type="button" class="numero">9</button>
-                <button type="button" class="numero">4</button>
-                <button type="button" class="numero">5</button>
-                <button type="button" class="numero">6</button>
-                <button type="button" class="numero">1</button>
-                <button type="button" class="numero">2</button>
-                <button type="button" class="numero">3</button>
-                <button type="button" class="numero">0</button>
-                <button type="button" class="operador" id="bt">=</button>
-                <button type="button" class="operador" id="bt">⌫</button>
+        <div id="display"></div>
 
+        <div class="container">
+
+            <form action="form.php" class="container-numeros">
+                <button type="button" class="numero" aria-label="Número 7">7</button>
+                <button type="button" class="numero" aria-label="Número 8">8</button>
+                <button type="button" class="numero" aria-label="Número 9">9</button>
+                <button type="button" class="numero" aria-label="Número 4">4</button>
+                <button type="button" class="numero" aria-label="Número 5">5</button>
+                <button type="button" class="numero" aria-label="Número 6">6</button>
+                <button type="button" class="numero" aria-label="Número 1">1</button>
+                <button type="button" class="numero" aria-label="Número 2">2</button>
+                <button type="button" class="numero" aria-label="Número 3">3</button>
+                <button type="button" class="numero" aria-label="Número 0">0</button>
+                <button type="button" class="operador" aria-label="Calcular resultado">=</button>
+                <button type="button" class="operador" aria-label="Apagar último número">⌫</button>
             </form>
-            
 
-            <form action="form.php"class="container-operadores">
-            <button type="button" class="operador" id="opera">+</button>
-            <button type="button" class="operador" id="opera">-</button>
-            <button type="button" class="operador" id="opera">x</button>
-            <button type="button" class="operador" id="opera">÷</button> 
+            <form action="form.php" class="container-operadores">
+                <button type="button" class="operador" aria-label="Somar" id="opera">+</button>
+                <button type="button" class="operador" aria-label="Subtrair" id="opera">-</button>
+                <button type="button" class="operador" aria-label="Multiplicar" id="opera">x</button>
+                <button type="button" class="operador" aria-label="Dividir" id="opera">÷</button>
             </form>
         </div>
     </main>
-                 <script src="script/script.js"></script>
+
+    <script src="script/script.js"></script>
 </body>
 </html>
-<form action="form.php"></form>

@@ -28,7 +28,6 @@ function adicionarAoDisplay(valor) {
     if (valor === "x") valor = "*";
     if (valor === "÷") valor = "/";
 
-    if (expressao.length >= LIMITE_CARACTERES) return ;
 
     const operadores = ["+", "-", "*", "/"];
     const ultimo = expressao.slice(-1);
@@ -42,6 +41,7 @@ function apagarUltimo() {
     expressao = expressao.slice(0, -1);
     display.textContent = expressao.replace(/\*/g, "x").replace(/\//g, "÷");
 }
+
 
 function calcular() {
     try {
@@ -67,9 +67,73 @@ function calcular() {
         }
 
         display.textContent = resultado;
+        
+        enviarParaBanco(expressao, resultado);
+
         expressao = resultado.toString();
+
     } catch (e) {
         display.textContent = "Erro";
         expressao = "";
     }
 }
+
+function enviarParaBanco(expressao, resultado) {
+    fetch("form.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `expressao=${encodeURIComponent(expressao)}&resultado=${encodeURIComponent(resultado)}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log("Resposta do PHP:", data);
+    })
+    .catch(error => {
+        console.error("Erro ao enviar para o banco:", error);
+    });
+}
+
+window.addEventListener("DOMContentLoaded", carregarResultadosSalvos);
+
+function carregarResultadosSalvos() {
+    fetch("listar.php")
+        .then(res => res.json())
+        .then(dados => {
+            if (dados.length > 0) {
+                atualizarDisplayComHistorico(dados);
+            } else {
+                display.textContent = "Nenhum cálculo ainda.";
+            }
+        })
+        .catch(err => {
+            display.textContent = "Erro ao carregar cálculos.";
+            console.error(err);
+        });
+}
+
+function enviarParaBanco(expressao, resultado) {
+    fetch("form.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `expressao=${encodeURIComponent(expressao)}&resultado=${encodeURIComponent(resultado)}`
+    })
+    .then(response => response.text())
+    .then(() => {
+        carregarResultadosSalvos(); // Atualiza o display depois de salvar
+    })
+    .catch(error => {
+        console.error("Erro ao enviar para o banco:", error);
+    });
+}
+
+function atualizarDisplayComHistorico(dados) {
+    display.textContent = "Últimos: ";
+    dados.reverse().forEach(item => {
+        display.textContent += `${item.expressao}=${item.resultado} | `;
+    });
+}
+
